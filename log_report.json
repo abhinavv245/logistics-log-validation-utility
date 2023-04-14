@@ -1,0 +1,46 @@
+{
+  "search": { "businessErrors": {} },
+  "on_search": {
+    "schemaError": [
+      "/message/catalog/bpp~1providers/0/items/0/descriptor must have required property 'short_desc'",
+      "/message/catalog/bpp~1providers/0/items/0/descriptor must have required property 'long_desc'"
+    ],
+    "businessErrors": {}
+  },
+  "init": { "businessErrors": {} },
+  "on_init": { "businessErrors": {} },
+  "confirm": {
+    "schemaError": [
+      "/message/order/fulfillments/0/start/instructions must have required property 'images'",
+      "/message/order/fulfillments/0/end/instructions must have required property 'additional_desc'"
+    ],
+    "businessErrors": {}
+  },
+  "on_confirm": {
+    "schemaError": [
+      "/message/order/fulfillments/0 must have required property 'tracking'"
+    ],
+    "businessErrors": {}
+  },
+  "status": { "businessErrors": {} },
+  "on_status": {
+    "schemaError": [
+      "/message/order/payment must have required property '@ondc/org/settlement_details'"
+    ],
+    "businessErrors": {}
+  },
+  "track": { "businessErrors": {} },
+  "on_track": { "businessErrors": {} },
+  "cancel": {
+    "businessErrors": {
+      "txnIdErr": "Transaction Id for /search and /cancel api should be same",
+      "cancelOrdrIdErr": "Order Id in /cancel and /confirm do not match"
+    }
+  },
+  "on_cancel": { "businessErrors": {} },
+  "support": { "businessErrors": {} },
+  "on_support": {
+    "schemaError": ["/message must have required property 'uri'"],
+    "businessErrors": {}
+  }
+}

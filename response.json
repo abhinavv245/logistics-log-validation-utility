@@ -1,0 +1,89 @@
+{
+  "search": {
+    "schemaError": [
+      "/context/transaction_id must match format \"uuid\"",
+      "/context/timestamp must match format \"date-time\"",
+      "/message/intent/fulfillment must have required property '@ondc/org/payload_details'"
+    ],
+    "businessErrors": {
+      "id_err": "transaction_id and message id can't be same",
+      "action_err": "context.action should be search",
+      "ttl_err": "ttl = PT30S as per the API Contract",
+      "pymtObj": "Payment terms missing in fulfillment object in /search API",
+      "dimensions": "Dimensions are required in /search API for intercity shipments."
+    }
+  },
+  "on_search": {
+    "0": "/message/catalog/bpp~1providers/0/items/0/descriptor must have required property 'short_desc'",
+    "1": "/message/catalog/bpp~1providers/0/items/0/descriptor must have required property 'long_desc'"
+  },
+  "init": {
+    "location": "Provider location missing in init api",
+    "Itemfulfillment": "Item fulfillment type in init is different in on_search"
+  },
+  "on_init": {
+    "msgId2": "Message Id cannot be same for different sets of APIs",
+    "bill": "Billing object mismatches in /init and /on_init",
+    "location": "Provider location missing in on_init api"
+  },
+  "confirm": {
+    "0": "/message/order/fulfillments/0/start/instructions must have required property 'images'",
+    "1": "/message/order/fulfillments/0/end/instructions must have required property 'additional_desc'",
+    "location": "Provider location missing in confirm api"
+  },
+  "on_confirm": {
+    "0": "/message/order/fulfillments/0 must have required property 'tracking'",
+    "start": "start attribute is missing in on_confirm api",
+    "end": "end attribute is missing in on_confirm api"
+  },
+  "status": {},
+  "on_status": {
+    "0": "/message/order/payment must have required property '@ondc/org/settlement_details'"
+  },
+  "update": {
+    "city": "City code mismatch in /search and /update",
+    "tmpstmp": "Timestamp for /on_confirm api cannot be greater than or equal to /update api",
+    "updtdTimestamp": "updated_at timestamp should match the context timestamp in update",
+    "start": "start attribute required for ready to ship fulfillment in update api"
+  },
+  "on_update": {
+    "0": "/context/transaction_id must match format \"uuid\"",
+    "1": "/message/order/fulfillments/0 must have required property 'start'",
+    "city": "City code mismatch in /search and /on_update",
+    "txnId": "Transaction Id should be same from /search onwards",
+    "awbNo": "AWB no is required for P2H2P shipments in on_update api",
+    "orderID": "Order Id mismatches in /confirm and /on_update"
+  },
+  "cancel": {
+    "0": "/context/transaction_id must match format \"uuid\"",
+    "city": "City code mismatch in /search and /cancel",
+    "tmpstmp": "Timestamp for /on_confirm api cannot be greater than or equal to /cancel api",
+    "txnId": "Transaction Id for /search and /cancel api should be same",
+    "cancelOrdrId": "Order Id in /cancel and /confirm do not match"
+  },
+  "on_cancel": {
+    "0": "/context/transaction_id must match format \"uuid\"",
+    "1": "/message/order/fulfillments/0 must have required property 'state'",
+    "city": "City code mismatch in /search and /on_cancel",
+    "tmpstmp": "Timestamp for /on_confirm api cannot be greater than or equal to /on_cancel api",
+    "txnId": "Transaction Id for /search and /on_cancel api should be same",
+    "onCancelId": "Order id in /on_cancel and /confirm do not match",
+    "onCancelRID": "Cancellation Reason Id in /cancel and /on_cancel should be same",
+    "awbNo": "AWB no is required for P2H2P shipments in on_cancel api"
+  },
+  "track": {
+    "city": "City code mismatch in /search and /track",
+    "tmpstmp": "Timestamp for /on_confirm api cannot be greater than or equal to /track api",
+    "txnId": "Transaction Id should be same from /search onwards",
+    "trackOrdrId": "Order Id in /track and /confirm do not match"
+  },
+  "on_track": {
+    "0": "/context/transaction_id must match format \"uuid\"",
+    "1": "/message/tracking must have required property 'url'",
+    "city": "City code mismatch in /search and /on_track",
+    "tmpstmp": "Timestamp for /on_confirm api cannot be greater than or equal to /on_track api",
+    "txnId": "Transaction Id should be same from /search onwards"
+  },
+  "support": undefined,
+  "on_support": undefined
+}
