@@ -15,7 +15,7 @@ try {
   fs.readdir(path, function (err, files) {
     try {
       if (err) {
-        console.log(`Some error occurred while reading files from ${path}`);
+        console.log(`Some error occurred while reading files from ${path}!`);
       } else if (!files.length) {
         console.log(`${path} folder is empty!!`);
       } else {
