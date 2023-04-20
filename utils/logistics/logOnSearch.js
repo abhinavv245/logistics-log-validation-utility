@@ -106,6 +106,7 @@ const validate = (domain, api, data, msgIdSet, dirPath) => {
       `Comparing transaction Ids of /${constants.LOG_SEARCH} and /${constants.LOG_ONSEARCH}`
     );
     if (!_.isEqual(dao.getValue("txnId"), onSearch.context.transaction_id)) {
+      console.log(onSearch.context.transaction_id);
       businessErr.txnId = `Transaction Id for /${constants.LOG_SEARCH} and /${constants.LOG_ONSEARCH} api should be same`;
     }
     // dao.setValue("txnId", onSearch.context.transaction_id);

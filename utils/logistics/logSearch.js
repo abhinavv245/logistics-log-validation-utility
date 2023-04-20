@@ -6,15 +6,18 @@ const { checkContext } = require("../../services/service");
 const validateSchema = require("../schemaValidation");
 
 const checkSearch = (dirPath, msgIdSet) => {
-  try{
-  let data = fs.readFileSync(dirPath + `/${constants.LOG_SEARCH}.json`);
-  data = JSON.parse(data);
-  return validate("logistics", constants.LOG_SEARCH, data, msgIdSet, dirPath);
-  }catch (err) {
+  try {
+    let data = fs.readFileSync(dirPath + `/${constants.LOG_SEARCH}.json`);
+    data = JSON.parse(data);
+    return validate("logistics", constants.LOG_SEARCH, data, msgIdSet, dirPath);
+  } catch (err) {
     if (err.code === "ENOENT") {
-      console.log(`!!File not found for /${onstants.LOG_SEARCH} API!`);
+      console.log(`!!File not found for /${constants.LOG_SEARCH} API!`);
     } else {
-      console.log(`!!Some error occurred while checking /${onstants.LOG_SEARCH} API`, err);
+      console.log(
+        `!!Some error occurred while checking /${constants.LOG_SEARCH} API`,
+        err
+      );
     }
   }
 };
@@ -52,6 +55,7 @@ const validate = (domain, api, data, msgIdSet, dirPath) => {
       dao.setValue("msgId", data.context.message_id);
       dao.setValue("city", data.context.city);
       msgIdSet.add(data.context.message_id);
+      console.log(dao.getValue("txnId"));
     } catch (error) {
       console.log(
         `!!Some error occurred while checking /${api} context`,
@@ -98,7 +102,10 @@ const validate = (domain, api, data, msgIdSet, dirPath) => {
     if (err.code === "ENOENT") {
       console.log(`!!File not found for /${constants.LOG_ONSEARCH} API!`);
     } else {
-      console.log(`!!Some error occurred while checking /${constants.LOG_ONSEARCH} API`, err);
+      console.log(
+        `!!Some error occurred while checking /${constants.LOG_ONSEARCH} API`,
+        err
+      );
     }
   }
 };

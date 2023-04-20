@@ -126,7 +126,13 @@ const validate = (domain, api, data, msgIdSet, dirPath) => {
     try {
       console.log(`Comparing order quote price and break up  in ${api}`);
       if (on_init.hasOwnProperty("quote")) {
-        if (on_init.quote.price.value !== on_init.quote.breakup[0].price.value)
+        let totalBreakup=0;
+        on_init.quote.breakup.forEach((breakup)=>{
+           totalBreakup+=parseFloat(breakup.price.value);
+        });
+        console.log(parseFloat(on_init.quote.price.value));
+        console.log(totalBreakup);
+        if (parseFloat(on_init.quote.price.value) !== totalBreakup)
           businessErr.quotePriceErr = `Quote price does not match the breakup total in ${api}`;
       }
     } catch (err) {

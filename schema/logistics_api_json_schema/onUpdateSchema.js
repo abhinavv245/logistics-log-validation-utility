@@ -147,7 +147,7 @@ module.exports = {
                         required: ["short_desc", "images"],
                       },
                     },
-                    required: ["time"],
+                    required: [],
                   },
                   agent: {
                     type: "object",

@@ -2,15 +2,35 @@
   "search": { "businessErrors": {} },
   "on_search": {
     "schemaError": [
-      "/message/catalog/bpp~1providers/0/items/0/descriptor must have required property 'short_desc'",
-      "/message/catalog/bpp~1providers/0/items/0/descriptor must have required property 'long_desc'"
+      "/message/catalog/bpp~1providers/0/items/0/id must be string",
+      "/message/catalog/bpp~1providers/0/items/1/parent_item_id must be string",
+      "/message/catalog/bpp~1providers/0/items/2/id must be string",
+      "/message/catalog/bpp~1providers/0/items/3/parent_item_id must be string"
     ],
+    "businessErrors": {
+      "city": "City code mismatch in /search and /on_search",
+      "itemTatErr": "Item TAT should not exceed 60 minutes in on_search api for category Immediate Delivery",
+      "logTimestampErr": "Item TAT timestamp should be the next day as context time stamp in on_search api for category Next Day Delivery"
+    }
+  },
+  "init": {
+    "schemaError": ["/message/order/items/0/id must be string"],
     "businessErrors": {}
   },
-  "init": { "businessErrors": {} },
-  "on_init": { "businessErrors": {} },
+  "on_init": {
+    "schemaError": [
+      "/message/order/items/0/id must be string",
+      "/message/order/quote/breakup/0/@ondc~1org~1item_id must be string",
+      "/message/order/quote/breakup/1/@ondc~1org~1item_id must be string",
+      "/message/order/quote/breakup/1/@ondc~1org~1title_type must be equal to one of the allowed values (Delivery Charge,RTO Charge,Reverse QC Charge,Tax)"
+    ],
+    "businessErrors": { "cityErr": "City code mismatch in search & on_init" }
+  },
   "confirm": {
     "schemaError": [
+      "/message/order/items/0/id must be string",
+      "/message/order/quote/breakup/0/@ondc~1org~1item_id must be string",
+      "/message/order/quote/breakup/1/@ondc~1org~1item_id must be string",
       "/message/order/fulfillments/0/start/instructions must have required property 'images'",
       "/message/order/fulfillments/0/end/instructions must have required property 'additional_desc'"
     ],
@@ -18,29 +38,57 @@
   },
   "on_confirm": {
     "schemaError": [
-      "/message/order/fulfillments/0 must have required property 'tracking'"
+      "/message/order/items/0/id must be string",
+      "/message/order/quote/breakup/0/@ondc~1org~1item_id must be string",
+      "/message/order/quote/breakup/1/@ondc~1org~1item_id must be string",
+      "/message/order/fulfillments/0/tracking must be boolean"
     ],
-    "businessErrors": {}
+    "businessErrors": {
+      "cityErr": "City code mismatch in /search and /on_confirm"
+    }
   },
   "status": { "businessErrors": {} },
   "on_status": {
     "schemaError": [
-      "/message/order/payment must have required property '@ondc/org/settlement_details'"
+      "/message/order/items/0/id must be string",
+      "/message/order/quote/breakup/0/@ondc~1org~1item_id must be string",
+      "/message/order/quote/breakup/1/@ondc~1org~1item_id must be string",
+      "/message/order/fulfillments/0/tracking must be boolean",
+      "/message/order/payment must be object",
+      "/message/order/tags must have required property 'cancellation_reason_id'",
+      "/message/order/tags must have required property 'AWB no'"
+    ],
+    "businessErrors": {
+      "cityErr": "City code mismatch in search and /on_status"
+    }
+  },
+  "update": {
+    "schemaError": [
+      "/message/order/items/0/id must be string",
+      "/message/order/fulfillments/0/start/instructions must have required property 'additional_desc'",
+      "/message/order/fulfillments/0/end/instructions must have required property 'additional_desc'"
     ],
     "businessErrors": {}
   },
-  "track": { "businessErrors": {} },
-  "on_track": { "businessErrors": {} },
-  "cancel": {
+  "on_update": {
+    "schemaError": [
+      "/message/order/items/0/id must be string",
+      "/message/order/fulfillments/0/start/instructions must have required property 'images'"
+    ],
     "businessErrors": {
-      "txnIdErr": "Transaction Id for /search and /cancel api should be same",
-      "cancelOrdrIdErr": "Order Id in /cancel and /confirm do not match"
+      "cityErr": "City code mismatch in /search and /on_update"
     }
   },
-  "on_cancel": { "businessErrors": {} },
+  "track": { "businessErrors": {} },
+  "on_track": {
+    "businessErrors": {
+      "cityErr": "City code mismatch in /search and /on_track"
+    }
+  },
   "support": { "businessErrors": {} },
   "on_support": {
-    "schemaError": ["/message must have required property 'uri'"],
-    "businessErrors": {}
+    "businessErrors": {
+      "cityErr": "City code mismatch in /search and /on_support"
+    }
   }
 }

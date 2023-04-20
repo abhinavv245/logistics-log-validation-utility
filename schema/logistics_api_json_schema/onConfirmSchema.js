@@ -228,7 +228,7 @@ module.exports = {
                           required: ["range"],
                         },
                       },
-                      required: ["time"],
+                      required: [],
                     },
                     end: {
                       type: "object",
