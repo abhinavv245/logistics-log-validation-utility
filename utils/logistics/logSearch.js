@@ -77,24 +77,25 @@ const validate = (domain, api, data, msgIdSet, dirPath) => {
     } catch (error) {
       console.log("!!Error while fetching fulfillment object", error);
     }
-
+  
     try {
-      console.log("Checking shipment type");
+      console.log(`Checking if dimensions are required in ${constants.LOG_SEARCH}`);
       if (onsearch.hasOwnProperty("bpp/providers")) {
-        onsearch["bpp/providers"].forEach((provider) => {
-          provider.items.forEach((item) => {
-            if (item.descriptor.code === "P2H2P") {
-              const dimension = search["@ondc/org/payload_details"].dimensions;
-              if (!dimension)
-                businessErr.dimensionsErr = `Dimensions are required in /${api} API for intercity shipments.`;
-            }
-          });
-        });
+        if (onsearch["bpp/providers"][0].items[0].descriptor.code === "P2H2P") {
+         if(search.hasOwnProperty("@ondc//org/payload_details")){
+          const dimension=search["@ondc//org/payload_details"].dimensions;
+          if(!dimension)
+          businessErr.dimensionErr = `Dimensions are required in case of intercity shipments in /${api} API`;
+         }
+        } 
       }
     } catch (error) {
-      console.log("!!Error while fetching bpp/providers in onsearch ", error);
+      console.log(
+        `!!Error while checking dimensions for /${constants.LOG_SEARCH} api`,
+        error
+      );
     }
-
+   
     result.businessErrors = businessErr;
     // dao.setValue("result", result);
     return result;

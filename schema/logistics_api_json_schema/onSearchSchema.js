@@ -181,7 +181,7 @@ module.exports = {
                                 ],
                               },
                             },
-                            required: ["id", "gps", "address"],
+                            required: [],
                           },
                     
                       },

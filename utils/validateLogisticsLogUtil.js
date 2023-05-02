@@ -89,7 +89,7 @@ const validateLogs = (dirPath) => {
   // //ON_SUPPORT API
   res.on_support = checkOnSupport(dirPath, msgIdSet);
 
-//   let logReport = "";
+  let logReport = "";
 
 //   let srchObj = dao.getValue("srchObj");
 //   let onSrchObj = dao.getValue("onSrchObj");
@@ -116,71 +116,126 @@ const validateLogs = (dirPath) => {
 //     console.log("Error while removing LMDB");
 //   }
 
-//   if (!_.isEmpty(srchObj)) {
-//     logReport += `**/search**\n${getObjValues(srchObj)}\n`;
-//   }
 
-//   if (!_.isEmpty(onSrchObj)) {
-//     logReport += `**/on_search**\n${getObjValues(onSrchObj)}\n`;
-//   }
+  if (!_.isEmpty(res.search.schemaError)) {
+    logReport += `**/search**(schema errors)\n${getObjValues(res.search.schemaError)}`;
+  }
 
+  if (!_.isEmpty(res.search.businessErrors)) {
+    logReport += `**/search**(business errors)\n${getObjValues(res.search.businessErrors)}\n`;
+  }
 
+  if (!_.isEmpty(res.on_search.schemaError)) {
+    logReport += `**/on_search**(schema errors)\n${getObjValues(res.on_search.schemaError)}`;
+  }
 
-//   if (!_.isEmpty(initObj)) {
-//     logReport += `**/init**\n${getObjValues(initObj)}\n`;
-//   }
+  if (!_.isEmpty(res.on_search.businessErrors)) {
+    logReport += `**/on_search**(business errors)\n\n${getObjValues(res.on_search.businessErrors)}\n`;
+  }
+  if (!_.isEmpty(res.init.schemaError)) {
+    logReport += `**/init**(schema errors)\n${getObjValues(res.init.schemaError)}`;
+  }
 
-//   if (!_.isEmpty(onInitObj)) {
-//     logReport += `**/on_init**\n${getObjValues(onInitObj)}\n`;
-//   }
+  if (!_.isEmpty(res.init.businessErrors)) {
+    logReport += `**/init**(business errors)${getObjValues(res.init.businessErrors)}\n`;
+  }
+  if (!_.isEmpty(res.on_init.schemaError)) {
+    logReport += `**/on_init**(schema errors)\n${getObjValues(res.on_init.schemaError)}`;
+  }
 
-//   if (!_.isEmpty(cnfrmObj)) {
-//     logReport += `**/confirm**\n${getObjValues(cnfrmObj)}\n`;
-//   }
+  if (!_.isEmpty(res.on_init.businessErrors)) {
+    logReport += `**/on_init**(business errors)${getObjValues(res.on_init.businessErrors)}\n`;
+  }
+  if (!_.isEmpty(res.confirm.schemaError)) {
+    logReport += `**/confirm**(schema errors)\n${getObjValues(res.confirm.schemaError)}`;
+  }
 
-//   if (!_.isEmpty(onCnfrmObj)) {
-//     logReport += `**/on_confirm**\n${getObjValues(onCnfrmObj)}\n`;
-//   }
+  if (!_.isEmpty(res.confirm.businessErrors)) {
+    logReport += `**/confirm**(business errors)${getObjValues(res.confirm.businessErrors)}\n`;
+  }
+  if (!_.isEmpty(res.on_confirm.schemaError)) {
+    logReport += `**/on_confirm**(schema errors)\n${getObjValues(res.on_confirm.schemaError)}`;
+  }
 
-//   if (!_.isEmpty(cnclObj)) {
-//     logReport += `**/cancel**\n${getObjValues(cnclObj)}\n`;
-//   }
+  if (!_.isEmpty(res.on_confirm.businessErrors)) {
+    logReport += `**/on_confirm**(business errors)${getObjValues(res.on_confirm.businessErrors)}\n`;
+  }
 
-//   if (!_.isEmpty(onCnclObj)) {
-//     logReport += `**/on_cancel**\n${getObjValues(onCnclObj)}\n`;
-//   }
+  if (!_.isEmpty(res.update.schemaError)) {
+    logReport += `**/update**(schema errors)\n${getObjValues(res.update.schemaError)}`;
+  }
 
-//   if (!_.isEmpty(trckObj)) {
-//     logReport += `**/track**\n${getObjValues(trckObj)}\n`;
-//   }
+  if (!_.isEmpty(res.update.businessErrors)) {
+    logReport += `**/update**(business errors)${getObjValues(res.update.businessErrors)}\n`;
+  }
+  if (!_.isEmpty(res.on_update.schemaError)) {
+    logReport += `**/on_update**(schema errors)\n${getObjValues(res.on_update.schemaError)}`;
+  }
 
-//   if (!_.isEmpty(onTrckObj)) {
-//     logReport += `**/on_track**\n${getObjValues(onTrckObj)}\n`;
-//   }
+  if (!_.isEmpty(res.on_update.businessErrors)) {
+    logReport += `**/on_update**(business errors)${getObjValues(res.on_update.businessErrors)}\n`;
+  }
+  
+  if (!_.isEmpty(res.status.schemaError)) {
+    logReport += `**/status**(schema errors)\n${getObjValues(res.status.schemaError)}`;
+  }
 
-//   if (!_.isEmpty(statObj)) {
-//     logReport += `**/status**\n${getObjValues(statObj)}\n`;
-//   }
-//   if (!_.isEmpty(onStatObj)) {
-//     logReport += `**/on_status**\n${getObjValues(onStatObj)}\n`;
-//   }
+  if (!_.isEmpty(res.status.businessErrors)) {
+    logReport += `**/status**(business errors)${getObjValues(res.status.businessErrors)}\n`;
+  }
+  if (!_.isEmpty(res.on_status.schemaError)) {
+    logReport += `**/on_status**(schema errors)\n${getObjValues(res.on_status.schemaError)}`;
+  }
 
-//   if (!_.isEmpty(updtObj)) {
-//     logReport += `**/update**\n${getObjValues(updtObj)}\n`;
-//   }
-//   if (!_.isEmpty(onUpdtObj)) {
-//     logReport += `**/on_update**\n${getObjValues(onUpdtObj)}\n`;
-//   }
+  if (!_.isEmpty(res.on_status.businessErrors)) {
+    logReport += `**/on_status**(business errors)${getObjValues(res.on_status.businessErrors)}\n`;
+  }
+  if (!_.isEmpty(res.cancel.schemaError)) {
+    logReport += `**/cancel**(schema errors)\n${getObjValues(res.cancel.schemaError)}`;
+  }
 
-//   if (!_.isEmpty(sprtObj)) {
-//     logReport += `**/support**\n${getObjValues(sprtObj)}\n`;
-//   }
+  if (!_.isEmpty(res.cancel.businessErrors)) {
+    logReport += `**/cancel**(business errors)${getObjValues(res.cancel.businessErrors)}\n`;
+  }
+  if (!_.isEmpty(res.on_cancel.schemaError)) {
+    logReport += `**/on_cancel**(schema errors)\n${getObjValues(res.on_cancel.schemaError)}`;
+  }
 
-//   if (!_.isEmpty(onSprtObj)) {
-//     logReport += `**/on_support** \n${getObjValues(onSprtObj)}\n`;
-//   }
+  if (!_.isEmpty(res.on_cancel.businessErrors)) {
+    logReport += `**/on_cancel**(business errors)${getObjValues(res.on_cancel.businessErrors)}\n`;
+  }
+  if (!_.isEmpty(res.track.schemaError)) {
+    logReport += `**/track**(schema errors)\n${getObjValues(res.track.schemaError)}`;
+  }
+
+  if (!_.isEmpty(res.track.businessErrors)) {
+    logReport += `**/track**(business errors)${getObjValues(res.track.businessErrors)}\n`;
+  }
+  if (!_.isEmpty(res.on_track.schemaError)) {
+    logReport += `**/on_track**(schema errors)\n${getObjValues(res.on_track.schemaError)}`;
+  }
+
+  if (!_.isEmpty(res.on_track.businessErrors)) {
+    logReport += `**/on_track**(business errors)${getObjValues(res.on_track.businessErrors)}\n`;
+  }
+  if (!_.isEmpty(res.support.schemaError)) {
+    logReport += `**/support**(schema errors)\n${getObjValues(res.support.schemaError)}`;
+  }
+
+  if (!_.isEmpty(res.support.businessErrors)) {
+    logReport += `**/support**(business errors)${getObjValues(res.support.businessErrors)}\n`;
+  }
+  if (!_.isEmpty(res.on_support.schemaError)) {
+    logReport += `**/support**(schema errors)\n${getObjValues(res.support.schemaError)}`;
+  }
+
+  if (!_.isEmpty(res.on_support.businessErrors)) {
+    logReport += `**/on_support**(business errors)${getObjValues(res.on_support.businessErrors)}\n`;
+  }
+  
 
   fs.writeFileSync("log_report.json", JSON.stringify(res));
+  fs.writeFileSync("log_report.md", logReport);
 
   console.log("Report Generated Successfully!!");
  

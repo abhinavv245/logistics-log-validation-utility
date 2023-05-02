@@ -3,6 +3,7 @@ package-lock.json
 *.env
 .vscode
 /public/logs/*.json
+log_report.json
 verification-logs
 /utils/*.json
 /utils/*.txt
