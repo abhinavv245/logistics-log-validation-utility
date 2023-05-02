@@ -23,6 +23,19 @@ const retailAPI = [
   "on_support",
 ];
 
+const logCategory = new Set([
+  "Grocery",
+  "F&B",
+  "Fashion",
+  "BPC",
+  "Electronics",
+  "Home & Decor",
+  "Pharma",
+  "Agriculture",
+  "Mobility",
+  "Logistics",
+]);
+
 const taxNotInlcusive = ["F&B"];
 
 const retailSttlmntPhase = ["sale-amount", "withholding-amount", "refund"];
@@ -72,8 +85,6 @@ const retailOrderState = [
   "Cancelled",
 ];
 
-
-
 const logFulfillmentState = [
   "Pending",
   "Searching-for-Agent",
@@ -87,7 +98,7 @@ const logFulfillmentState = [
   "Cancelled",
 ];
 
-const convertISOtoSeconds=(timePeriod)=> {
+const convertISOtoSeconds = (timePeriod) => {
   let timePerRegex =
     /P((\d+)Y)?((\d+)M)?((\d+)W)?((\d+)D)?T?((\d+)H)?((\d+)M)?((\d+)S)?/;
 
@@ -102,7 +113,8 @@ const convertISOtoSeconds=(timePeriod)=> {
 
   const day = Number(extractTimes?.[8]) || 0;
 
-  const yearMonthDay = year * 31536000 + month * 2628288+ week*604800 + day * 86400;
+  const yearMonthDay =
+    year * 31536000 + month * 2628288 + week * 604800 + day * 86400;
 
   const hours = Number(extractTimes?.[10]) || 0;
   const minutes = Number(extractTimes?.[12]) || 0;
@@ -112,7 +124,7 @@ const convertISOtoSeconds=(timePeriod)=> {
   const totalSeconds = yearMonthDay + hours * 3600 + minutes * 60 + seconds;
 
   return totalSeconds;
-}
+};
 
 const logOrderState = [
   "Created",
@@ -256,4 +268,5 @@ module.exports = {
   countDecimalDigits,
   grocery_categories_id,
   fnb_categories_id,
+  logCategory,
 };
