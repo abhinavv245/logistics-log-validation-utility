@@ -116,123 +116,82 @@ const validateLogs = (dirPath) => {
   //     console.log("Error while removing LMDB");
   //   }
 
-  // if (!_.isEmpty(res.search.schemaError)) {
-  //   logReport += `**/search**(schema errors)\n${getObjValues(res.search.schemaError)}`;
-  // }
+  if (!_.isEmpty(res.search)) {
+    logReport += `**/search**\n${getObjValues(res.search)}\n`;
+  }
 
-  // if (!_.isEmpty(res.search.businessErrors)) {
-  //   logReport += `**/search**(business errors)\n${getObjValues(res.search.businessErrors)}\n`;
-  // }
 
-  // if (!_.isEmpty(res.on_search.schemaError)) {
-  //   logReport += `**/on_search**(schema errors)\n${getObjValues(res.on_search.schemaError)}`;
-  // }
+  if (!_.isEmpty(res.on_search)) {
+    logReport += `**/on_search**\n${getObjValues(res.on_search)}\n`;
+  }
 
-  // if (!_.isEmpty(res.on_search.businessErrors)) {
-  //   logReport += `**/on_search**(business errors)\n\n${getObjValues(res.on_search.businessErrors)}\n`;
-  // }
-  // if (!_.isEmpty(res.init.schemaError)) {
-  //   logReport += `**/init**(schema errors)\n${getObjValues(res.init.schemaError)}`;
-  // }
+  if (!_.isEmpty(res.init)) {
+    logReport += `**/init**\n${getObjValues(res.init)}\n`;
+  }
 
-  // if (!_.isEmpty(res.init.businessErrors)) {
-  //   logReport += `**/init**(business errors)${getObjValues(res.init.businessErrors)}\n`;
-  // }
-  // if (!_.isEmpty(res.on_init.schemaError)) {
-  //   logReport += `**/on_init**(schema errors)\n${getObjValues(res.on_init.schemaError)}`;
-  // }
+  if (!_.isEmpty(res.on_init)) {
+    logReport += `**/on_init**\n${getObjValues(res.on_init)}\n`;
+  }
 
-  // if (!_.isEmpty(res.on_init.businessErrors)) {
-  //   logReport += `**/on_init**(business errors)${getObjValues(res.on_init.businessErrors)}\n`;
-  // }
-  // if (!_.isEmpty(res.confirm.schemaError)) {
-  //   logReport += `**/confirm**(schema errors)\n${getObjValues(res.confirm.schemaError)}`;
-  // }
 
-  // if (!_.isEmpty(res.confirm.businessErrors)) {
-  //   logReport += `**/confirm**(business errors)${getObjValues(res.confirm.businessErrors)}\n`;
-  // }
-  // if (!_.isEmpty(res.on_confirm.schemaError)) {
-  //   logReport += `**/on_confirm**(schema errors)\n${getObjValues(res.on_confirm.schemaError)}`;
-  // }
+  if (!_.isEmpty(res.confirm)) {
+    logReport += `**/confirm**\n${getObjValues(res.confirm)}\n`;
+  }
 
-  // if (!_.isEmpty(res.on_confirm.businessErrors)) {
-  //   logReport += `**/on_confirm**(business errors)${getObjValues(res.on_confirm.businessErrors)}\n`;
-  // }
+ 
+  if (!_.isEmpty(res.on_confirm)) {
+    logReport += `**/on_confirm**\n${getObjValues(res.on_confirm)}\n`;
+  }
 
-  // if (!_.isEmpty(res.update.schemaError)) {
-  //   logReport += `**/update**(schema errors)\n${getObjValues(res.update.schemaError)}`;
-  // }
 
-  // if (!_.isEmpty(res.update.businessErrors)) {
-  //   logReport += `**/update**(business errors)${getObjValues(res.update.businessErrors)}\n`;
-  // }
-  // if (!_.isEmpty(res.on_update.schemaError)) {
-  //   logReport += `**/on_update**(schema errors)\n${getObjValues(res.on_update.schemaError)}`;
-  // }
+  if (!_.isEmpty(res.update)) {
+    logReport += `**/update**\n${getObjValues(res.update)}\n`;
+  }
 
-  // if (!_.isEmpty(res.on_update.businessErrors)) {
-  //   logReport += `**/on_update**(business errors)${getObjValues(res.on_update.businessErrors)}\n`;
-  // }
+  if (!_.isEmpty(res.on_update)) {
+    logReport += `**/on_update**\n${getObjValues(res.on_update)}\n`;
+  }
 
-  // if (!_.isEmpty(res.status.schemaError)) {
-  //   logReport += `**/status**(schema errors)\n${getObjValues(res.status.schemaError)}`;
-  // }
 
-  // if (!_.isEmpty(res.status.businessErrors)) {
-  //   logReport += `**/status**(business errors)${getObjValues(res.status.businessErrors)}\n`;
-  // }
-  // if (!_.isEmpty(res.on_status.schemaError)) {
-  //   logReport += `**/on_status**(schema errors)\n${getObjValues(res.on_status.schemaError)}`;
-  // }
+  if (!_.isEmpty(res.status)) {
+    logReport += `**/status**\n${getObjValues(res.status)}\n`;
+  }
 
-  // if (!_.isEmpty(res.on_status.businessErrors)) {
-  //   logReport += `**/on_status**(business errors)${getObjValues(res.on_status.businessErrors)}\n`;
-  // }
-  // if (!_.isEmpty(res.cancel.schemaError)) {
-  //   logReport += `**/cancel**(schema errors)\n${getObjValues(res.cancel.schemaError)}`;
-  // }
+  if (!_.isEmpty(res.on_status)) {
+    logReport += `**/on_status**\n${getObjValues(res.on_status)}\n`;
+  }
 
-  // if (!_.isEmpty(res.cancel.businessErrors)) {
-  //   logReport += `**/cancel**(business errors)${getObjValues(res.cancel.businessErrors)}\n`;
-  // }
-  // if (!_.isEmpty(res.on_cancel.schemaError)) {
-  //   logReport += `**/on_cancel**(schema errors)\n${getObjValues(res.on_cancel.schemaError)}`;
-  // }
 
-  // if (!_.isEmpty(res.on_cancel.businessErrors)) {
-  //   logReport += `**/on_cancel**(business errors)${getObjValues(res.on_cancel.businessErrors)}\n`;
-  // }
-  // if (!_.isEmpty(res.track.schemaError)) {
-  //   logReport += `**/track**(schema errors)\n${getObjValues(res.track.schemaError)}`;
-  // }
+  if (!_.isEmpty(res.cancel)) {
+    logReport += `**/cancel**\n${getObjValues(res.cancel)}`;
+  }
 
-  // if (!_.isEmpty(res.track.businessErrors)) {
-  //   logReport += `**/track**(business errors)${getObjValues(res.track.businessErrors)}\n`;
-  // }
-  // if (!_.isEmpty(res.on_track.schemaError)) {
-  //   logReport += `**/on_track**(schema errors)\n${getObjValues(res.on_track.schemaError)}`;
-  // }
 
-  // if (!_.isEmpty(res.on_track.businessErrors)) {
-  //   logReport += `**/on_track**(business errors)${getObjValues(res.on_track.businessErrors)}\n`;
-  // }
-  // if (!_.isEmpty(res.support.schemaError)) {
-  //   logReport += `**/support**(schema errors)\n${getObjValues(res.support.schemaError)}`;
-  // }
+  if (!_.isEmpty(res.on_cancel)) {
+    logReport += `**/on_cancel**\n${getObjValues(res.on_cancel)}`;
+  }
 
-  // if (!_.isEmpty(res.support.businessErrors)) {
-  //   logReport += `**/support**(business errors)${getObjValues(res.support.businessErrors)}\n`;
-  // }
-  // if (!_.isEmpty(res.on_support.schemaError)) {
-  //   logReport += `**/support**(schema errors)\n${getObjValues(res.support.schemaError)}`;
-  // }
 
-  // if (!_.isEmpty(res.on_support.businessErrors)) {
-  //   logReport += `**/on_support**(business errors)${getObjValues(res.on_support.businessErrors)}\n`;
-  // }
+  if (!_.isEmpty(res.track)) {
+    logReport += `**/track**\n${getObjValues(res.track)}`;
+  }
 
-  fs.writeFileSync("log_report.json", JSON.stringify(res));
+
+  if (!_.isEmpty(res.on_track)) {
+    logReport += `**/on_track**\n${getObjValues(res.on_track)}`;
+  }
+
+  if (!_.isEmpty(res.support)) {
+    logReport += `**/support**\n${getObjValues(res.support)}`;
+  }
+
+
+  if (!_.isEmpty(res.on_support)) {
+    logReport += `**/support**\n${getObjValues(res.support)}`;
+  }
+
+
+  // fs.writeFileSync("log_report.json", JSON.stringify(res));
   fs.writeFileSync("log_report.md", logReport);
 
   console.log("Report Generated Successfully!!");

@@ -231,8 +231,11 @@ const timestampCheck = (date) => {
 
 const getObjValues = (obj) => {
   let values = "";
+  
   Object.values(obj).forEach((value) => {
-    values += value + "\n";
+    if(typeof value != 'object')
+    values += "- "+value + "\n";
+    else values += getObjValues(value);
   });
   return values;
 };
